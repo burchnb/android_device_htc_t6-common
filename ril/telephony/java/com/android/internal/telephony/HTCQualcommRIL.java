@@ -84,12 +84,15 @@ public class HTCQualcommRIL extends RIL implements CommandsInterface {
             appStatus.pin1_replaced  = p.readInt();
             appStatus.pin1           = appStatus.PinStateFromRILInt(p.readInt());
             appStatus.pin2           = appStatus.PinStateFromRILInt(p.readInt());
+            riljLog("[NJB] app_type: "+appStatus.app_type+"app_state: "+appStatus.app_state+"perso_substate: "+appStatus.perso_substate+"aid: "+appStatus.aid+"app_label: "+appStatus.app_label+"pin1_replaced: "+appStatus.pin1_replaced+"pin1: "+appStatus.pin1+"pin2: "+appStatus.pin2);
             // All subsequent readInt()s added for our device
-            p.readInt(); // pin1_num_retries
-            p.readInt(); // puk1_num_retries
-            p.readInt(); // pin2_num_retries
-            p.readInt(); // puk2_num_retries
-            p.readInt(); // perso_unblock_retries
+            if(i==1){
+                riljLog("[NJB] extra "+p.readInt(); // pin1_num_retries
+                riljLog("[NJB] extra "+p.readInt(); // puk1_num_retries
+                riljLog("[NJB] extra "+p.readInt(); // pin2_num_retries
+                riljLog("[NJB] extra "+p.readInt(); // puk2_num_retries
+                riljLog("[NJB] extra "+p.readInt(); // perso_unblock_retries
+            }
             cardStatus.mApplications[i] = appStatus;
         }
         return cardStatus;
